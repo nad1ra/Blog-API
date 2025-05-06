@@ -33,7 +33,6 @@ class RegisterSerializer(serializers.Serializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name']
         )
-        User.objects.create(user=user)
         return user
 
 class LoginSerializer(serializers.Serializer):

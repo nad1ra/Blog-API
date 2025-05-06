@@ -10,10 +10,12 @@ from .models import UserProfile
 from .serializers import UserProfileSerializer, RegisterSerializer, LoginSerializer, LogoutSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
+
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+
 
 class LoginView(APIView):
     permission_classes = [AllowAny]
@@ -45,8 +47,10 @@ class LogoutView(APIView):
             return Response({"detail": "Logout successful!"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class RefreshTokenView(TokenRefreshView):
     pass
+
 
 class UserProfileView(generics.RetrieveAPIView):
     serializer_class = UserProfileSerializer
